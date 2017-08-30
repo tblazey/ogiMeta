@@ -119,6 +119,9 @@ stanData = list(
 #Run stan
 stanFit = stan(model_code=stanModel,data=stanData,pars=params,iter=20000,warmup=10000,chains=8,thin=5,control=list(adapt_delta=0.99))
 
+#Save posterior
+save("stanFit",file=paste('../data/',meas,'_posteriorSamples_',format(Sys.Date(),format='%m_%d_%y'),'.Rdata',sep=''))
+
 #Get population parameters
 muG = extract(stanFit,pars="muG")$muG
 sigma = extract(stanFit,pars="sigma")$sigma
