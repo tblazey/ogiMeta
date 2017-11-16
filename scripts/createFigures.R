@@ -1,5 +1,6 @@
 #Load in the libraries we will need
-library(ggplot2); library(rstan); library(metafor); library(cowplot)
+library(ggplot2); library(rstan); library(metafor)
+library(cowplot); library(grid); library(shinystan)
 
 #Move into script directory
 setwd(dirname(sys.frame(1)$ofile))
@@ -15,7 +16,7 @@ ggOptions = theme(axis.text.x=element_text(size=14),axis.text.y=element_text(siz
                   plot.title=element_text(size=16,face="bold",hjust=0.5),legend.title.align=0.5,legend.title=element_text(size=14,face="bold"))
 
 #Load in  meta analysis data
-metData = read.csv('../data/cleanData.csv')
+metData = read.csv('../data/metaAvData.csv')
 
 #Which measurment are we doing?
 meas = "OCI"
@@ -27,7 +28,7 @@ metData$Meas.Error.Type = get(paste(meas,".Error.Type",sep=''),metData)
 metData$Meas.N = get(paste(meas,".N",sep=''),metData)
 
 #Remove nans
-measData = metData[is.na(metData$Meas)==FALSE&metData$Meas!="ASK",]
+measData = metData[is.na(metData$Meas)==FALSE,]
 
 #Make numeric values
 measData$Meas = as.numeric(as.character(measData$Meas))
@@ -70,13 +71,8 @@ for (s in uStudy){
   
 }
 
-#Get suffix sorter
-lChar = substr(uRef, nchar(uRef), nchar(uRef))
-lChar[lChar!="c"&lChar!="b"&lChar!="a"] = 3
-lChar[lChar=="c"] = 1; lChar[lChar=="b"] = 2; lChar[lChar=="a"] = 3
-
-#Sort by year and then by suffix
-refFactor = factor(uRef,levels=uRef[order(-uYear,lChar)],ordered=TRUE)
+#Sort by year then alphabetically
+refFactor = factor(uRef,levels=uRef[order(uYear,uRef,decreasing=c(TRUE,FALSE))],ordered=TRUE)
 
 #Make a data frame of study averages
 measFrame = data.frame(ref=refFactor,meas=uMeas,se=uSe,year=uYear)
@@ -156,7 +152,7 @@ combFrame = data.frame(med=c(measFrame$meas,NA,quantMuG[2]),
                        type=c(rep("Literature",length(measFrame$meas)),NA,"Meta-analysis"),
                        low=c(measFrame$meas-measFrame$se*1.96,NA,quantMuG[1]),
                        up=c(measFrame$meas+measFrame$se*1.96,NA,quantMuG[3]),
-                       study=factor(c(uRef,"","Overall"),levels=c(uRef,"","Overall")[order(-c(uYear,2999,3000),c(lChar,3,3))],ordered=TRUE))
+                       study=factor(c(uRef,"","Overall"),levels=c(uRef,"","Overall")[order(c(uYear,2999,3000),c(uRef,'z','z'),decreasing=c(TRUE,FALSE))],ordered=TRUE))
 
 #Make a combined plot
 combPlot = ggplot(combFrame,aes(y=study,x=med))
@@ -166,30 +162,48 @@ combPoint = geom_point(color="#006BB6",fill="#006BB6",
 combError = geom_segment(aes(x=low,xend=up,y=study,yend=study),size=1)
 combLine = geom_vline(aes(xintercept=6.0),linetype="dashed",size=1)
 combG = geom_hline(aes(yintercept=2.0),linetype="solid",size=1)
-combText = annotate("text",x=9.75,y=combFrame$study,
-                    label=ifelse(is.na(combFrame$med),"",sprintf("%.2f [%.2f, %.2f]",combFrame$med,combFrame$low,combFrame$up)),
-                    parse=FALSE,size=4.5,fontface=2,na.rm=TRUE)
-combX = scale_x_continuous(meas,limits=c(2.5,10.75))
+combX = scale_x_continuous(meas,limits=c(2,14.75),
+                           breaks=seq(from=2,to=14,by=2),
+                           labels=seq(from=2,to=14,by=2))
 combY = scale_y_discrete("Study",drop=FALSE)
 combTitle = ggtitle(paste(meas,'Meta-analysis'))
-combFig = combPlot + combError + combPoint + combLine + combG
-combFig = combFig + combTitle + combX + combY + combText + ggOptions
+combFig = combPlot + combPoint + combLine + combError + combG
+combFig = combFig + combTitle + combX + combY + ggOptions + theme(plot.margin = unit(c(1,9,1,1), "lines"))
 print(combFig)
+
+nStudy = length(combFrame$med)
+for (i in 1:nStudy)  {
+  if (!is.na(combFrame$med[i])){
+    combFig = combFig + annotation_custom(
+      grob = textGrob(label = sprintf("%.2f [%.2f, %.2f]",
+                                      combFrame$med[i],
+                                      combFrame$low[i],combFrame$up[i]),
+                      hjust = 0, gp = gpar(cex = 1.15,fontface=2)),
+      ymin = which(levels(combFrame$study)==combFrame$study[i]),
+      ymax = which(levels(combFrame$study)==combFrame$study[i]),
+      xmin = 15.75,
+      xmax = 15.75)
+  } 
+}  
+
+#Override clipping
+combTable = ggplot_gtable(ggplot_build(combFig))
+combTable$layout$clip[combTable$layout$name == "panel"] = "off"
 
 #Save plot
 pdf(paste('../figures/',meas,'CombFigStudy.pdf',sep=''),width=9,height=9)
-print(combFig)
+grid.draw(combTable)
 dev.off()
 
 #Make dataframe for polygon
-cFrame = data.frame(x=quantMuG,y=c(1.25,0,1.25))
-pFrame = data.frame(x=quantPred,y=c(1.25,0,1.25))
+cFrame = data.frame(x=quantMuG,y=c(3.25,0,3.25))
+pFrame = data.frame(x=quantPred,y=c(3.25,0,3.25))
 
 #Make a quick funnel plot
 fPlot = ggplot(measFrame,aes(x=meas,y=se))
 fPoint = geom_point(size=4,color="#006BB6")
-fY = scale_y_reverse("Standard Error",limits=c(1.25,0))
-fX = scale_x_continuous(meas,limits=c(3,8))
+fY = scale_y_reverse("Standard Error",limits=c(3.25,0))
+fX = scale_x_continuous(meas,limits=c(3,9))
 fEst = geom_vline(xintercept=quantMuG[2],size=1,linetype="dashed")
 fPolyC = geom_polygon(data=cFrame,aes(x=x,y=y),fill="gray65",color="black")
 fPolyP = geom_polygon(data=pFrame,aes(x=x,y=y),fill="gray85",color="black")
@@ -215,7 +229,7 @@ if ( exists('ogiFunnel') & exists('ociFunnel')  ) {
   #Combine funnel plots
   plotComb = plot_grid(ogiFunnel+theme(plot.title=element_blank()),
                        ociFunnel+theme(plot.title=element_blank()),
-                       labels=c('A)','B)'),label_size=16,vjust=1,hjust=0)
+                       labels=c('a)','b)'),label_size=16,vjust=1,hjust=0)
   
   #Add title
   plotTitle = ggdraw() + draw_label("Funnel Plots", fontface='bold',size=18)
@@ -241,5 +255,12 @@ regTest = regtest(freqFit,ret.fit=TRUE)
 #Show user regression test p-value
 print(paste(meas,' Asymmetry p-value = ',round(regTest$pval,4),sep=''))
 
+#Make a shiny stan object of fit
+sStan = as.shinystan(stanFit)
 
+#Get rhat
+rHat = retrieve(sStan,"rhat")
+
+#Show rHat that is futherest from zero
+print(max(1.0 - rHat))
 
