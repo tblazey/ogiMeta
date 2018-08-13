@@ -11,9 +11,10 @@ options(mc.cores = parallel::detectCores())
 
 #Plotting options for ggplot2
 theme_set(theme_gray())
-ggOptions = theme(axis.text.x=element_text(size=14),axis.text.y=element_text(size=12),axis.title.x=element_text(size=14,face="bold"),
-                  axis.title.y=element_text(size=14,angle=90,face="bold"),legend.text=element_text(size=14,face="bold"),
-                  plot.title=element_text(size=16,face="bold",hjust=0.5),legend.title.align=0.5,legend.title=element_text(size=14,face="bold"))
+ggOptions = theme(axis.text.x=element_text(size=10,family="Arial"),axis.text.y=element_text(size=10,family="Arial"),
+                  axis.title.x=element_text(size=10,face="bold",family="Arial"),axis.title.y=element_text(size=10,angle=90,face="bold",family="Arial"),
+                  legend.text=element_text(size=10,face="bold",family="Arial"),plot.title=element_text(size=12,face="bold",hjust=0.5,family="Arial"),
+                  legend.title.align=0.5,legend.title=element_text(size=10,face="bold",family="Arial"))
 
 #Load in  meta analysis data
 metData = read.csv('../data/metaAvData.csv')
@@ -53,7 +54,7 @@ for (s in uStudy){
   sIdx = measData$Study==s
   nExp = sum(sIdx)
   
-  #Add study name,year, and gender
+  #Add study name and year
   uRef = append(uRef,as.character(measData$Reference[sIdx][1]))
   uYear = append(uYear,measData$Year[sIdx][1])
   
@@ -80,30 +81,30 @@ measFrame = data.frame(ref=refFactor,meas=uMeas,se=uSe,year=uYear)
 #Define stan model for meta analysis
 stanModel = "
 
-  data {
-    int<lower=0> N;
-    vector[N] se;
-    vector[N] y;
-  }
+data {
+int<lower=0> N;
+vector[N] se;
+vector[N] y;
+}
 
-  parameters {
-    real muG;
-    vector[N] muS;
-    real<lower=0> sigma;
-  } 
+parameters {
+real muG;
+vector[N] muS;
+real<lower=0> theta;
+} 
 
-  model {
-    muG ~ normal(6,2);
-    muS ~ normal(0,sigma);
-    for (i in 1:N){
-      y[i] ~ normal(muG + muS[i], se[i]);
-    }
+model {
+muG ~ normal(6,2);
+muS ~ normal(0,theta);
+for (i in 1:N){
+y[i] ~ normal(muG + muS[i], se[i]);
+}
 }
 
 "
 
 #Which parameters to save
-params = c("muG","muS","sigma")
+params = c("muG","muS","theta")
 
 #Make data list for stan
 stanData = list(
@@ -113,28 +114,41 @@ stanData = list(
 )
 
 #Run stan
-stanFit = stan(model_code=stanModel,data=stanData,pars=params,iter=20000,warmup=10000,chains=8,thin=5,control=list(adapt_delta=0.99))
-
-#Save posterior
-save("stanFit",file=paste('../data/',meas,'_posteriorSamples_',format(Sys.Date(),format='%m_%d_%y'),'.Rdata',sep=''))
+run = FALSE
+if (run == TRUE){
+  stanFit = stan(model_code=stanModel,data=stanData,pars=params,iter=20000,warmup=10000,chains=8,thin=5,control=list(adapt_delta=0.99))
+  
+  #Save posterior
+  save("stanFit",file=paste('../data/',meas,'_posteriorSamples_',format(Sys.Date(),format='%m_%d_%y'),'.Rdata',sep=''))
+}else{
+  load(paste('../data/',meas,'_posteriorSamples_07_05_18.Rdata',sep=''))
+}
 
 #Get population parameters
 muG = extract(stanFit,pars="muG")$muG
-sigma = extract(stanFit,pars="sigma")$sigma
+theta = extract(stanFit,pars="theta")$theta
 
-#Get populations quantiles
+#Compute within subjects variance
+k = stanData$N
+w = 1 / stanData$se^2
+sigmaHat = sum(w)*(k-1) / (sum(w)^2 - sum(w^2))
+bayesI = 100 * theta^2 / (theta^2+sigmaHat)
+
+#Get quantiles
 quantMuG = quantile(muG,probs=c(0.025,0.5,0.975))
-quantSigma = quantile(sigma,probs=c(0.025,0.5,0.975))
+quantTheta = quantile(theta,probs=c(0.025,0.5,0.975))
+quantI = quantile(bayesI,probs=c(0.025,0.5,0.975))
 
-#Show population quantiles
+#Show quantiles
 print(paste(meas,' Population Mean:',sep='')); print(quantMuG)
-print(paste(meas,' Population Sigma:',sep='')); print(quantSigma)
+print(paste(meas,' Theta:',sep='')); print(quantTheta)
+print(paste(meas,' I^2:',sep='')); print(quantI)
 
 #Get prediction interval
 nSamples = dim(muG)
 muPred = rep(0,nSamples)
 for (i in 1:nSamples){
-  muPred[i] = muG[i] + rnorm(1,0,sigma[i])
+  muPred[i] = muG[i] + rnorm(1,0,theta[i])
 }
 
 #Get quantiles for prediction interval
@@ -169,7 +183,6 @@ combY = scale_y_discrete("Study",drop=FALSE)
 combTitle = ggtitle(paste(meas,'Meta-analysis'))
 combFig = combPlot + combPoint + combLine + combError + combG
 combFig = combFig + combTitle + combX + combY + ggOptions + theme(plot.margin = unit(c(1,9,1,1), "lines"))
-print(combFig)
 
 nStudy = length(combFrame$med)
 for (i in 1:nStudy)  {
@@ -191,7 +204,12 @@ combTable = ggplot_gtable(ggplot_build(combFig))
 combTable$layout$clip[combTable$layout$name == "panel"] = "off"
 
 #Save plot
-pdf(paste('../figures/',meas,'CombFigStudy.pdf',sep=''),width=9,height=9)
+if (meas == "OGI"){
+  outName = "Fig2.tif"
+}else{
+  outName = "Fig3.tif"
+}
+tiff(paste('../figures/',outName,sep=''),width=7,7,units='in',res=300)
 grid.draw(combTable)
 dev.off()
 
@@ -209,10 +227,9 @@ fPolyC = geom_polygon(data=cFrame,aes(x=x,y=y),fill="gray65",color="black")
 fPolyP = geom_polygon(data=pFrame,aes(x=x,y=y),fill="gray85",color="black")
 fTitle = ggtitle(paste(meas,'Funnel Plot'))
 fFigure = fPlot + fPolyP + fPolyC + fPoint + fX + fY + fEst + fTitle + ggOptions
-print(fFigure)
 
 #Save funnel plot
-pdf(paste('../figures/',meas,'FunnelStudy.pdf',sep=''),width=6,height=6)
+tiff(paste('../figures/',meas,'FunnelStudy.tiff',sep=''),width=6,height=6,units='in',res=300)
 print(fFigure)
 dev.off()
 
@@ -229,25 +246,21 @@ if ( exists('ogiFunnel') & exists('ociFunnel')  ) {
   #Combine funnel plots
   plotComb = plot_grid(ogiFunnel+theme(plot.title=element_blank()),
                        ociFunnel+theme(plot.title=element_blank()),
-                       labels=c('a)','b)'),label_size=16,vjust=1,hjust=0)
+                       labels=c('A)','B)'),label_size=11,vjust=1,hjust=0)
   
   #Add title
-  plotTitle = ggdraw() + draw_label("Funnel Plots", fontface='bold',size=18)
+  plotTitle = ggdraw() + draw_label("Funnel Plots", fontface='bold',size=12,fontfamily='Arial')
   plotComb = plot_grid(plotTitle, plotComb, ncol=1, rel_heights=c(0.1, 1))
-  print(plotComb)
   
   #Save final plot
-  pdf('../figures/funnelPlots.pdf',width=10,height=5)
+  tiff('../figures/Fig4.tif',width=7,height=3.5,units='in',res=300)
   print(plotComb)
   dev.off()
   
 }
 
-#Run freq. meta analysis to get I^2
+#Run freq. meta analysis.
 freqFit = rma(data = measFrame, yi = meas, sei = se, slab = ref)
-
-#Show user I^2
-print(paste(meas," I^2 = ",round(freqFit$I2,2),'%',sep=''))
 
 #Run regression test
 regTest = regtest(freqFit,ret.fit=TRUE)
@@ -262,5 +275,5 @@ sStan = as.shinystan(stanFit)
 rHat = retrieve(sStan,"rhat")
 
 #Show rHat that is futherest from zero
-print(max(1.0 - rHat))
+print(max(abs(1.0 - rHat)))
 

@@ -1,56 +1,56 @@
-Experiment,Study,PMID,Reference,Journal/Book,Age,Age.Error,Age.Error.Type,Substudy,Year,OGI,OGI.Error,OGI.Error.Type,OGI.N,OCI,OCI.Error,OCI.Error.Type,OCI.N
-1,1,NA,"Gibbs et al., 1942",Journal of Biological Chemistry,22.9,2.36,SD,NA,1942,5.78,1.23,SD,33,7.38,2.68,SD,33
-2,2,16695788,"Scheinberg et al., 1949",The Journal of Clinical Investigation,25.1,4.04,SD,Erect,1949,5.56,1.96,SD,14,NA,NA,NA,NA
-3,2,16695788,"Scheinberg et al., 1949",The Journal of Clinical Investigation,25.1,4.04,SD,Supine,1949,4.99,0.97,SD,18,NA,NA,NA,NA
-53,45,13425236,"Sokoloff et al., 1957",Annals of the New York Academy of Sciences,24.5,9.1,SD,NA,1957,5.5,1.76,SD,8,NA,NA,NA,NA
-48,40,NA,"Eisenberg et al., 1962",Metabolism,40.3,6.2,SD,Control,1962,4.33,1.33,SD,21,3.89,1.36,SD,10
-5,4,NA,"Dastur et al., 1963",Human Aging: A Biological and Behavioral Study,20.8,0.4,SE,NA,1963,5.5,0.5,SE,15,NA,NA,NA,NA
-4,3,14103599,"Gottstein et al., 1963",Klin Wochenschr,21-69,NA,NA,NA,1963,5.76,0.91,SD,32,6.22,1.32,SD,18
-6,5,14247382,"Scheinberg et al., 1965",Journal of Neurological Sciences,32.3,6.9,SD,NA,1965,5.81,1.8,SD,21,5.97,2.16,SD,20
-7,6,6031186,"Cohen et al., 1967",The Journal of Applied Physiology,21-25,NA,NA,NA,1967,5.52,0.24,SE,9,NA,NA,NA,NA
-54,46,NA,"Gottstein et al., 1967",Klinische Wochenschrift,30-60,NA,NA,NA,1967,5.95,2.12,SD,12,6.67,2.99,SD,12
-8,7,5471647,"Raichle et al., 1970",Archives of Neurology,NA,NA,NA,NA,1970,5.28,1.23,SD,3,5.3,1.17,SD,3
-9,8,5006989,"Takeshita, 1972",Anesthesiology,43,3,SE,NA,1972,4.91,1.18,SE,6,NA,NA,NA,NA
-10,9,2112135,"Blomqvist et al., 1990",Journal of Cerebral Blood Flow and Metabolism,NA,NA,NA,NA,1990,5.56,0.87,SD,7,NA,NA,NA,NA
-11,10,8113391,"Boyle et al., 1994",The Journal of Clinical Investigation,25,2,SE,NA,1994,4.85,0.13,SE,12,NA,NA,NA,NA
-12,11,7714007,"Madsen et al., 1995",Journal of Cerebral Blood Flow and Metabolism,25,NA,NA,Study 1,1995,6.1,0.4,SD,8,NA,NA,NA,NA
-13,11,7714007,"Madsen et al., 1995",Journal of Cerebral Blood Flow and Metabolism,25,NA,NA,Study 2,1995,5.9,0.4,SD,9,NA,NA,NA,NA
-52,44,8967461,"Hasselbalch et al., 1996",American Journal of Physiology,24,4,SD,NA,1996,5.57,0.47,SD,8,NA,NA,NA,NA
-14,12,10562597,"Ide et al., 1999",Journal of Applied Physiology,23,1,SE,NA,1999,6.04,0.39,SE,12,5.92,0.4,SE,12
-15,13,10618160,"Ide et al., 2000",The Journal of Physiology,25,2,SD,NA,2000,5.95,0.68,SD,6,5.84,0.73,SD,6
-16,14,11956354,"Dalsgaard et al., 2002",The Journal of Physiology,25,4,SE,Study 1,2002,5.8,0.35,SE,10,6.11,0.45,SE,10
-17,14,11956354,"Dalsgaard et al., 2002",The Journal of Physiology,25,1,SE,Study 2,2002,5.25,0.13,SE,10,5.4,0.16,SE,10
-55,47,12368665,"Moller et al., 2002",Journal of Cerebral Blood Flow and Metabolism,25,NA,NA,NA,2002,4.29,0.32,SD,8,4.31,0.44,SD,8
-18,15,12621535,"Dalsgaard et al., 2003",Experimental Physiology,24,NA,NA,NA,2003,NA,NA,NA,NA,5.4,0.2,SE,10
-51,43,14526234,"Glenn et al., 2003",Journal of Cerebral Blood Flow and Metabolism,33.3,8.3,SD,Control,2003,5.83,1.41,SD,31,6.11,0.34,SE,31
-43,36,12754171,"Nybo et al., 2003",Journal of Applied Physiology,27,2,SE,NA,2003,NA,NA,NA,NA,5.92,0.72,SE,8
-35,29,14625823,"Strauss et al., 2003",Liver Transplantation,NA,NA,NA,NA,2003,6.2,0.9,SD,8,NA,NA,NA,NA
-19,16,14608005,"Dalsgaard et al., 2004a",The Journal of Physiology,25,1,SE,NA,2004,5.7,0.3,SE,9,6,0.3,SE,9
-20,17,15155282,"Dalsgaard et al., 2004b","Regulatory, Integrative and Comparative Physiology",22,1,SE,NA,2004,NA,NA,NA,NA,5.6,0.2,SE,8
-45,38,15208287,"Dalsgaard et al., 2004c",The Journal of Applied Physiology,22,1,SE,Cycling,2004,NA,NA,NA,NA,5.6,0.2,SE,7
-46,38,15208287,"Dalsgaard et al., 2004c",The Journal of Applied Physiology,26,1,SE,Arm cranking,2004,NA,NA,NA,NA,6.6,0.3,SE,8
-42,35,15498819,"Ogoh et al., 2005",Heart and Circulatory Physiology,23,2,SD,NA,2005,NA,NA,NA,NA,5.6,0.7,SE,7
-21,18,16794025,"Rasmussen et al., 2006",Journal of Applied Physiology,22-29,NA,NA,NA,2006,4.65,1.44,SD,8,4.29,1.33,SD,8
-23,20,18403423,"Larsen et al., 2008",The Journal of Physiology,27,6,SD,NA,2008,5.39,0.52,SE,8,5.5,1.4,SD,8
-22,19,17932151,"Voliantis et al., 2008",The Journal of Physiology,32,4,SE,NA,2008,5.89,0.51,SE,6,5.67,0.52,SE,6
-50,42,19726713,"Bailey et al., 2009","Regulatory, Integrative and Comparative Physiology",27,4,SD,Normoxia,2009,5.84,0.86,SD,11,6.69,1.07,SD,10
-24,21,19659603,"Gam et al., 2009",Clinical Physiology and Functional Imaging,33,6,SD,NA,2009,NA,NA,NA,NA,5.6,0.9,SD,8
-25,22,19605762,"Seifert et al., 2009a","Regulatory, Integrative and Comparative Physiology",32,6,SD,Control Before,2009,4.45,0.43,SE,7,4.6,0.34,SE,7
-26,22,19605762,"Seifert et al., 2009a","Regulatory, Integrative and Comparative Physiology",32,6,SD,Control After,2009,6.35,0.46,SE,7,7.43,0.59,SE,7
-27,22,19605762,"Seifert et al., 2009a","Regulatory, Integrative and Comparative Physiology",30,5,SD,Training Before,2009,4.74,0.28,SE,10,4.88,0.35,SE,7
-28,23,19015195,"Seifert et al., 2009b",The Journal of Physiology,24,3,SD,Adrenaline ,2009,4.8,0.9,SD,10,5.1,1.5,SD,10
-29,23,19015195,"Seifert et al., 2009b",The Journal of Physiology,27,7,SD,Noradrenaline,2009,5,0.7,SD,8,5.2,0.7,SD,8
-30,24,20403976,"Rasmussen et al, 2010a",The Journal of Physiology,20-34,NA,NA,NA,2010,5.8,0.9,SD,16,6.2,0.7,SD,16
-44,37,20522733,"Rasmussen et al, 2010b",Journal of Applied Physiology,18-34,NA,NA,NA,2010,5.62,0.27,SE,7,6.06,0.4,SE,7
-31,25,20660020,"Seifert et al., 2010",Experimental Physiology,23,4,SD,NA,2010,6.1,0.5,SD,9,5.7,0.3,SD,9
-32,26,21098003,"Volianitis et al., 2011",The Journal of Physiology,23,2,SD,NA,2011,NA,NA,NA,NA,5.8,0.6,SD,6
-33,27,22441982,"Overgaard et al., 2012",The FASEB Journal,26,6,SD,NA,2012,5.21,1.23,SD,9,5.25,1.14,SD,9
-34,28,23230234,"Fisher et al., 2013",The Journal of Physiology,22,1,SE,NA,2013,5.03,0.29,SE,11,5.25,0.33,SE,11
-40,34,24117382,"Ainslie et al., 2014",Clinical Science,28,4.5,SD,Hypoxia trial,2014,4.6,1.3,SD,10,4.8,1.6,SD,10
-41,34,24117382,"Ainslie et al., 2014",Cliniical Science,28,4.5,SD,Hyperoxia trial,2014,4.6,0.6,SD,10,4.9,0.7,SD,10
-36,30,25362150,"Smith et al., 2014",The Journal of Physiology,30,6,SD,NA,2014,7.1,1.2,SD,8,6.7,1,SD,8
-49,41,25594628,"Glenn et al., 2015",Journal of Neurotrauma ,28.2,8.2,SD,Control,2015,4.1,0.4,SE,6,4.19,0.44,SE,6
-37,31,26371170,"Trangmar et al., 2015",Heart and Circulatory Physiology,29,5,SD,NA,2015,6.1,0.5,SE,10,5.66,0.37,SE,10
-47,39,25690474,"Willie et al., 2015",Journal of Cerebral Blood Flow and Metabolism,30.4,7,SD,NA,2015,7.5,5.8,SD,9,8.7,9.1,SD,9
-38,32,27256521,"Bain et al., 2016",The Journal of Physiology,29.5,7.3,SD,NA,2016,4.99,0.76,SD,14,4.98,0.78,SD,14
-39,33,28071964,"Bain et al., 2017",Journal of Cerebral Blood Flow and Metabolism,31,8,SD,NA,2017,6.06,1.32,SD,11,6.06,1.32,SD,11
+Experiment,Study,PMID,Reference,Journal/Book,Age,Age.Error,Age.Error.Type,Substudy,Year,OGI,OGI.Error,OGI.Error.Type,OGI.N,OGI.Source,OCI,OCI.Error,OCI.Error.Type,OCI.N,OCI.Source
+1,1,NA,"Gibbs et al., 1942",Journal of Biological Chemistry,22.9,2.36,SD,NA,1942,5.78,1.23,SD,33,Table,7.38,2.68,SD,33,Table
+2,2,16695788,"Scheinberg et al., 1949",The Journal of Clinical Investigation,25.1,4.04,SD,Erect,1949,5.56,1.96,SD,14,Table,NA,NA,NA,NA,NA
+3,2,16695788,"Scheinberg et al., 1949",The Journal of Clinical Investigation,25.1,4.04,SD,Supine,1949,4.99,0.97,SD,18,Table,NA,NA,NA,NA,NA
+53,45,13425236,"Sokoloff et al., 1957",Annals of the New York Academy of Sciences,24.5,9.1,SD,NA,1957,5.5,1.76,SD,8,Table,NA,NA,NA,NA,NA
+48,40,NA,"Eisenberg et al., 1962",Metabolism,40.3,6.2,SD,Control,1962,4.33,1.33,SD,21,Table,3.89,1.36,SD,10,Table
+5,4,NA,"Dastur et al., 1963",Human Aging: A Biological and Behavioral Study,20.8,0.4,SE,NA,1963,5.5,0.5,SE,15,Table,NA,NA,NA,NA,NA
+4,3,14103599,"Gottstein et al., 1963",Klin Wochenschr,21-69,NA,NA,NA,1963,5.76,0.91,SD,32,Table,6.22,1.32,SD,18,Table
+6,5,14247382,"Scheinberg et al., 1965",Journal of Neurological Sciences,32.3,6.9,SD,NA,1965,5.81,1.8,SD,21,Table,5.97,2.16,SD,20,Table
+7,6,6031186,"Cohen et al., 1967",The Journal of Applied Physiology,21-25,NA,NA,NA,1967,5.52,0.24,SE,9,Table,NA,NA,NA,NA,NA
+54,46,NA,"Gottstein et al., 1967",Klinische Wochenschrift,30-60,NA,NA,NA,1967,5.95,2.12,SD,12,Table,6.67,2.99,SD,12,Table
+8,7,5471647,"Raichle et al., 1970",Archives of Neurology,NA,NA,NA,NA,1970,5.28,1.23,SD,3,Table,5.3,1.17,SD,3,Table
+9,8,5006989,"Takeshita, 1972",Anesthesiology,43,3,SE,NA,1972,4.91,1.18,SE,6,Table,NA,NA,NA,NA,NA
+10,9,2112135,"Blomqvist et al., 1990",Journal of Cerebral Blood Flow and Metabolism,NA,NA,NA,NA,1990,5.56,0.87,SD,7,Table,NA,NA,NA,NA,NA
+11,10,8113391,"Boyle et al., 1994",The Journal of Clinical Investigation,25,2,SE,NA,1994,4.85,0.13,SE,12,Table,NA,NA,NA,NA,NA
+12,11,7714007,"Madsen et al., 1995",Journal of Cerebral Blood Flow and Metabolism,25,NA,NA,Study 1,1995,6.1,0.4,SD,8,Table,NA,NA,NA,NA,NA
+13,11,7714007,"Madsen et al., 1995",Journal of Cerebral Blood Flow and Metabolism,25,NA,NA,Study 2,1995,5.9,0.4,SD,9,Table,NA,NA,NA,NA,NA
+52,44,8967461,"Hasselbalch et al., 1996",American Journal of Physiology,24,4,SD,NA,1996,5.57,0.47,SD,8,Table,NA,NA,NA,NA,NA
+14,12,10562597,"Ide et al., 1999",Journal of Applied Physiology,23,1,SE,NA,1999,6.04,0.39,SE,12,Table,5.92,0.4,SE,12,Table
+15,13,10618160,"Ide et al., 2000",The Journal of Physiology,25,2,SD,NA,2000,5.95,0.68,SD,6,Table,5.84,0.73,SD,6,Table
+16,14,11956354,"Dalsgaard et al., 2002",The Journal of Physiology,25,4,SE,Study 1,2002,5.8,0.35,SE,10,Table,6.11,0.45,SE,10,Table
+17,14,11956354,"Dalsgaard et al., 2002",The Journal of Physiology,25,1,SE,Study 2,2002,5.25,0.13,SE,10,Table,5.4,0.16,SE,10,Table
+55,47,12368665,"Moller et al., 2002",Journal of Cerebral Blood Flow and Metabolism,25,NA,NA,NA,2002,4.29,0.32,SD,8,Author,4.31,0.44,SD,8,Author
+18,15,12621535,"Dalsgaard et al., 2003",Experimental Physiology,24,NA,NA,NA,2003,NA,NA,NA,NA,NA,5.4,0.2,SE,10,Text
+51,43,14526234,"Glenn et al., 2003",Journal of Cerebral Blood Flow and Metabolism,33.3,8.3,SD,Control,2003,5.83,1.41,SD,31,Table,6.11,0.34,SE,31,Author
+43,36,12754171,"Nybo et al., 2003",Journal of Applied Physiology,27,2,SE,NA,2003,NA,NA,NA,NA,NA,5.92,0.72,SE,8,Figure
+35,29,14625823,"Strauss et al., 2003",Liver Transplantation,NA,NA,NA,NA,2003,6.2,0.9,SD,8,Table,NA,NA,NA,NA,NA
+19,16,14608005,"Dalsgaard et al., 2004a",The Journal of Physiology,25,1,SE,NA,2004,5.7,0.3,SE,9,Text,6,0.3,SE,9,Text
+20,17,15155282,"Dalsgaard et al., 2004b","Regulatory, Integrative and Comparative Physiology",22,1,SE,NA,2004,NA,NA,NA,NA,NA,5.6,0.2,SE,8,Text
+45,38,15208287,"Dalsgaard et al., 2004c",The Journal of Applied Physiology,22,1,SE,Cycling,2004,NA,NA,NA,NA,NA,5.6,0.2,SE,7,Text
+46,38,15208287,"Dalsgaard et al., 2004c",The Journal of Applied Physiology,26,1,SE,Arm cranking,2004,NA,NA,NA,NA,NA,6.6,0.3,SE,8,Text
+42,35,15498819,"Ogoh et al., 2005",Heart and Circulatory Physiology,23,2,SD,NA,2005,NA,NA,NA,NA,NA,5.6,0.7,SE,7,Table
+21,18,16794025,"Rasmussen et al., 2006",Journal of Applied Physiology,22-29,NA,NA,NA,2006,4.65,1.44,SD,8,Author,4.29,1.33,SD,8,Author
+23,20,18403423,"Larsen et al., 2008",The Journal of Physiology,27,6,SD,NA,2008,5.39,0.52,SE,8,Figure,5.5,1.4,SD,8,Text
+22,19,17932151,"Voliantis et al., 2008",The Journal of Physiology,32,4,SE,NA,2008,5.89,0.51,SE,6,Table,5.67,0.52,SE,6,Table
+50,42,19726713,"Bailey et al., 2009","Regulatory, Integrative and Comparative Physiology",27,4,SD,Normoxia,2009,5.84,0.86,SD,11,Author,6.69,1.07,SD,10,Author
+24,21,19659603,"Gam et al., 2009",Clinical Physiology and Functional Imaging,33,6,SD,NA,2009,NA,NA,NA,NA,NA,5.6,0.9,SD,8,Text
+25,22,19605762,"Seifert et al., 2009a","Regulatory, Integrative and Comparative Physiology",32,6,SD,Control Before,2009,4.45,0.43,SE,7,Figure,4.6,0.34,SE,7,Figure
+26,22,19605762,"Seifert et al., 2009a","Regulatory, Integrative and Comparative Physiology",32,6,SD,Control After,2009,6.35,0.46,SE,7,Figure,7.43,0.59,SE,7,Figure
+27,22,19605762,"Seifert et al., 2009a","Regulatory, Integrative and Comparative Physiology",30,5,SD,Training Before,2009,4.74,0.28,SE,10,Figure,4.88,0.35,SE,7,Figure
+28,23,19015195,"Seifert et al., 2009b",The Journal of Physiology,24,3,SD,Adrenaline ,2009,4.8,0.9,SD,10,Text,5.1,1.5,SD,10,Text
+29,23,19015195,"Seifert et al., 2009b",The Journal of Physiology,27,7,SD,Noradrenaline,2009,5,0.7,SD,8,Text,5.2,0.7,SD,8,Text
+30,24,20403976,"Rasmussen et al, 2010a",The Journal of Physiology,20-34,NA,NA,NA,2010,5.8,0.9,SD,16,Table,6.2,0.7,SD,16,Table
+44,37,20522733,"Rasmussen et al, 2010b",Journal of Applied Physiology,18-34,NA,NA,NA,2010,5.62,0.27,SE,7,Figure,6.06,0.4,SE,7,Figure
+31,25,20660020,"Seifert et al., 2010",Experimental Physiology,23,4,SD,NA,2010,6.1,0.5,SD,9,Table,5.7,0.3,SD,9,Table
+32,26,21098003,"Volianitis et al., 2011",The Journal of Physiology,23,2,SD,NA,2011,NA,NA,NA,NA,NA,5.8,0.6,SD,6,Text
+33,27,22441982,"Overgaard et al., 2012",The FASEB Journal,26,6,SD,NA,2012,5.21,1.23,SD,9,Table,5.25,1.14,SD,9,Table
+34,28,23230234,"Fisher et al., 2013",The Journal of Physiology,22,1,SE,NA,2013,5.03,0.29,SE,11,Figure,5.25,0.33,SE,11,Figure
+40,34,24117382,"Ainslie et al., 2014",Clinical Science,28,4.5,SD,Hypoxia trial,2014,4.6,1.3,SD,10,Table,4.8,1.6,SD,10,Table
+41,34,24117382,"Ainslie et al., 2014",Cliniical Science,28,4.5,SD,Hyperoxia trial,2014,4.6,0.6,SD,10,Table,4.9,0.7,SD,10,Table
+36,30,25362150,"Smith et al., 2014",The Journal of Physiology,30,6,SD,NA,2014,7.1,1.2,SD,8,Table,6.7,1,SD,8,Table
+49,41,25594628,"Glenn et al., 2015",Journal of Neurotrauma ,28.2,8.2,SD,Control,2015,4.1,0.4,SE,6,Author,4.19,0.44,SE,6,Author
+37,31,26371170,"Trangmar et al., 2015",Heart and Circulatory Physiology,29,5,SD,NA,2015,6.1,0.5,SE,10,Text,5.66,0.37,SE,10,Figure
+47,39,25690474,"Willie et al., 2015",Journal of Cerebral Blood Flow and Metabolism,30.4,7,SD,NA,2015,7.5,5.8,SD,9,Table,8.7,9.1,SD,9,Table
+38,32,27256521,"Bain et al., 2016",The Journal of Physiology,29.5,7.3,SD,NA,2016,4.99,0.76,SD,14,Author,4.98,0.78,SD,14,Table
+39,33,28071964,"Bain et al., 2017",Journal of Cerebral Blood Flow and Metabolism,31,8,SD,NA,2017,6.06,1.32,SD,11,Author,6.06,1.32,SD,11,Table
